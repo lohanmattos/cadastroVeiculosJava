@@ -1,0 +1,63 @@
+<!DOCTYPE html>	
+<html lang="pt-br" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>Controle de Veículos - Relatório</title>
+  		 <meta charset="UTF-8"/>	
+		 <meta name="viewport" content="width=device-width, initial-scale=1" />
+	     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+	     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet"/>	
+	     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>		
+		  <!-- DataTables -->
+  		 <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap4.min.css}">
+ 		 <link rel="stylesheet" th:href="@{/css/responsive.bootstrap4.min.css}">
+  		 <link rel="stylesheet" th:href="@{/css/buttons.bootstrap4.min.css}"> 	
+  		 <div th:replace="~{fragmentos/cabecalho :: cabecalho}"></div>		
+  		 
+  		 <!--Icones-->
+  		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  		 
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="container">
+    <div th:replace="~{fragmentos/formularioPesquisa :: formularioPesquisa}">      
+    </div>
+  	<hr />
+	<div th:replace="~{fragmentos/rodape :: rodape}"></div>
+</div>
+
+<!-- jQuery -->
+<script th:src="@{/js/jquery.min.js}"></script>
+
+<!-- DataTables  & Plugins -->
+<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/js/jszip.min.js}"></script>
+<script th:src="@{/js/pdfmake.min.js}"></script>
+<script th:src="@{/js/vfs_fonts.js}"></script>
+<script th:src="@{/js/buttons.html5.min.js}"></script>
+<script th:src="@{/js/buttons.print.min.js}"></script>
+<script th:src="@{/js/buttons.colVis.min.js}"></script>
+
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/dist/js/demo.js}"></script>
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+</script>
+
+</body>
+</html>

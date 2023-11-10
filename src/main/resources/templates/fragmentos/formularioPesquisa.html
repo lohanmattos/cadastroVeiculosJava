@@ -1,0 +1,27 @@
+<section class="container" th:fragment="formularioPesquisa">
+<h3 class="page-header">Veículos</h3>
+  
+<th:block th:include="mensagemValidacao"></th:block>  
+<table id="example1"  class="table table-bordered table-striped" th:fragment="tabela">	
+				<thead>
+					<tr>
+						<th>Placa</th>
+						<th>Fabricante</th>
+						<th>Modelo</th>
+						<th>Ano</th>
+						<th sec:authorize="hasAuthority('ADMIN')">Editar</th>
+						<th sec:authorize="hasAuthority('ADMIN')">Excluir</th>						
+					</tr>
+				</thead>				
+				<tbody id="myTable">
+					<tr th:each="produto : ${listarProduto}">
+						<td th:text="${produto.placa}"</td>
+						<td th:text="${produto.fabricante.nomeFabricante}"</td>
+						<td th:text="${produto.modelo}"</td>
+						<td th:text="${produto.anoFabricacao}"</td>
+						<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/adm/{id}(id=${produto.placa})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a></td>						
+						<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/adm/deletar/{id}(id=${produto.placa})}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a></td>								
+					</tr>			
+				</tbody>
+	</table>			
+</section>
