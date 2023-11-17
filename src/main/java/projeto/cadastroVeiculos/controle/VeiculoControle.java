@@ -32,6 +32,7 @@ public class VeiculoControle {
 	
 	@Autowired
 	private CombustivelRepositorio combustivelRepositorio;
+	
 		
 	//Listar
 	@RequestMapping("/produtos")
@@ -46,11 +47,12 @@ public class VeiculoControle {
 	//Novo
 	@GetMapping("adm/novo")
 	public String novoProduto(Model model, Veiculo produto) {
-
-		List<Fabricante> fabricantes = fabricanteRespositorio.findAll();
-		List<Combustivel> tiposCombustiveis = combustivelRepositorio.findAll();
 		
 		model.addAttribute("produto", produto);
+		
+		List<Fabricante> fabricantes = fabricanteRespositorio.findAll();
+		
+		List<Combustivel> tiposCombustiveis = combustivelRepositorio.findAll();
 		
 		model.addAttribute("fabricantes", fabricantes);
 		model.addAttribute("tiposCombustiveis", tiposCombustiveis);
@@ -72,6 +74,14 @@ public class VeiculoControle {
 	@GetMapping("adm/{placa}")
 	public String alterarProduto(@PathVariable("placa") String placa, Model model) {
 		Optional<Veiculo> produto = produtoRepositorio.findById(placa);
+		
+		
+		List<Fabricante> fabricantes = fabricanteRespositorio.findAll();
+		
+		List<Combustivel> tiposCombustiveis = combustivelRepositorio.findAll();
+		
+		model.addAttribute("fabricantes", fabricantes);
+		model.addAttribute("tiposCombustiveis", tiposCombustiveis);
 					
 		model.addAttribute("produto", produto);	
 		return "editarProduto";

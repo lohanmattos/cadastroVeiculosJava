@@ -1,7 +1,8 @@
 <section class="container" th:fragment="formularioPesquisa">
 <h3 class="page-header">Veículos</h3>
   
-<th:block th:include="mensagemValidacao"></th:block>  
+<th:block th:insert="~{mensagemValidacao}"></th:block>  
+
 <table id="example1"  class="table table-bordered table-striped" th:fragment="tabela">	
 				<thead>
 					<tr>
